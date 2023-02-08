@@ -49,7 +49,10 @@ func importData(filename string) []*TestPoint {
 		fmt.Println(err.Error())
 		return nil
 	}
-	json.Unmarshal(raw, &points)
+	err = json.Unmarshal(raw, &points)
+	if err != nil {
+		panic(err)
+	}
 	return points.Features
 }
 
@@ -75,7 +78,10 @@ func main() {
 	//c.NodeSize = 64
 	northWest := simplePoint{71.36718750000001, -83.79204408779539}
 	southEast := simplePoint{-71.01562500000001, 83.7539108491127}
-	c.ClusterPoints(geoPoints)
+	err := c.ClusterPoints(geoPoints)
+	if err != nil {
+		panic(err)
+	}
 
 	result := c.GetClusters(northWest, southEast, 2)
 

@@ -180,7 +180,7 @@ func (c *Cluster) getTile(x, y, z int, latlon bool) []ClusterPoint {
 		bottom,
 	)
 	var result []ClusterPoint
-	if latlon == true {
+	if latlon {
 		result = c.pointIDToLatLonPoint(resultIds, index.Points)
 	} else {
 		result = c.pointIDToMerkatorPoint(resultIds, index.Points, float64(x), float64(y), z2f)
@@ -193,7 +193,7 @@ func (c *Cluster) getTile(x, y, z int, latlon bool) []ClusterPoint {
 		maxY1 := float64(bottom)
 		resultIds = index.Range(minX1, minY1, maxX1, maxY1)
 		var sr1 []ClusterPoint
-		if latlon == true {
+		if latlon {
 			sr1 = c.pointIDToLatLonPoint(resultIds, index.Points)
 		} else {
 			sr1 = c.pointIDToMerkatorPoint(resultIds, index.Points, z2f, float64(y), z2f)
@@ -209,7 +209,7 @@ func (c *Cluster) getTile(x, y, z int, latlon bool) []ClusterPoint {
 		maxY2 := float64(bottom)
 		resultIds = index.Range(minX2, minY2, maxX2, maxY2)
 		var sr2 []ClusterPoint
-		if latlon == true {
+		if latlon {
 			sr2 = c.pointIDToLatLonPoint(resultIds, index.Points)
 		} else {
 			sr2 = c.pointIDToMerkatorPoint(resultIds, index.Points, -1, float64(y), z2f)
