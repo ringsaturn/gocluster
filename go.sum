@@ -1,10 +1,10 @@
-github.com/MadAppGang/kdbush v0.0.0-20161230031607-ed6b87d35c48 h1:4aHJeBZvH0cZXJaP42W0wmu25OUrVVHzKeu2Yf2YwBU=
-github.com/MadAppGang/kdbush v0.0.0-20161230031607-ed6b87d35c48/go.mod h1:IPJZyWFdzR4j9BjN+3UQyUjRKTTiJ/aHBHFV0E2D/0c=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
+github.com/ringsaturn/kdbush v0.0.0-20230208163211-f65d7ecd6d2d h1:ME0nfohpewnjjIKi+ZyPxYdDwmQG3k+bDRqxv0SVVck=
+github.com/ringsaturn/kdbush v0.0.0-20230208163211-f65d7ecd6d2d/go.mod h1:oWnxeP+GlVyhlN2K5/55gD8bpEhFpMnoZdOK+ZHAiuY=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/objx v0.4.0/go.mod h1:YvHI0jy2hoMjB+UWwv71VJQ9isScKT/TqJzVSSt89Yw=
 github.com/stretchr/objx v0.5.0/go.mod h1:Yh+to48EsGEfYuaHDzXPcE3xhTkx73EhmCGUpEOglKo=

@@ -3,7 +3,7 @@ module github.com/ringsaturn/gocluster
 go 1.19
 
 require (
-	github.com/MadAppGang/kdbush v0.0.0-20161230031607-ed6b87d35c48
+	github.com/ringsaturn/kdbush v0.0.0-20230208163211-f65d7ecd6d2d
 	github.com/stretchr/testify v1.8.1
 )
 

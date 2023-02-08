@@ -3,7 +3,7 @@ package cluster
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"os"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -50,7 +50,7 @@ func TestCluster_GetTile00(t *testing.T) {
 	assert.Equal(t, result, expectedPoints)
 }
 
-//validate original result from JS library
+// validate original result from JS library
 func TestCluster_GetTileDefault(t *testing.T) {
 	points := importData("./testdata/places.json")
 	if len(points) == 0 {
@@ -124,7 +124,6 @@ func TestCluster_GetClusters(t *testing.T) {
 	//fmt.Printf("getting points %v \n",string(resultJSON))
 }
 
-
 func TestCluster_AllClusters(t *testing.T) {
 	points := importData("./testdata/places.json")
 	if len(points) == 0 {
@@ -143,7 +142,6 @@ func TestCluster_AllClusters(t *testing.T) {
 	c.TileSize = 512
 	c.NodeSize = 64
 	c.ClusterPoints(geoPoints)
-
 
 	var result []ClusterPoint = c.AllClusters(2)
 	assert.NotEmpty(t, result)
@@ -188,7 +186,7 @@ func ExampleCluster_GetTile() {
 
 	c.ClusterPoints(geoPoints)
 	result := c.GetTile(0, 0, 4)
-	fmt.Printf("%+v",result)
+	fmt.Printf("%+v", result)
 	// Output: [{X:-2418 Y:165 zoom:0 Id:62 NumPoints:1} {X:-3350 Y:253 zoom:0 Id:22 NumPoints:1}]
 
 }
@@ -208,11 +206,11 @@ func ExampleCluster_GetClusters() {
 	southEast := simplePoint{-71.01562500000001, 83.7539108491127}
 
 	var result []ClusterPoint = c.GetClusters(northWest, southEast, 2)
-	fmt.Printf("%+v",result[:3])
+	fmt.Printf("%+v", result[:3])
 	// Output: [{X:-14.473194953510028 Y:26.157965399212813 zoom:1 Id:107 NumPoints:1} {X:-12.408741828510014 Y:58.16339752811905 zoom:1 Id:159 NumPoints:1} {X:-9.269962828651519 Y:42.928736057812586 zoom:1 Id:127 NumPoints:1}]
 }
 
-////Helpers
+// //Helpers
 type simplePoint struct {
 	Lon, Lat float64
 }
@@ -252,7 +250,7 @@ func importData(filename string) []*TestPoint {
 		Type     string
 		Features []*TestPoint
 	}{}
-	raw, err := ioutil.ReadFile(filename)
+	raw, err := os.ReadFile(filename)
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil
@@ -264,7 +262,7 @@ func importData(filename string) []*TestPoint {
 
 func importPoints(filename string) []ClusterPoint {
 	var result []ClusterPoint
-	raw, err := ioutil.ReadFile(filename)
+	raw, err := os.ReadFile(filename)
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil
@@ -278,7 +276,7 @@ func importGeoJSONResultFeature(filename string) []GeoJSONResultFeature {
 	var points = struct {
 		Features []GeoJSONResultFeature
 	}{}
-	raw, err := ioutil.ReadFile(filename)
+	raw, err := os.ReadFile(filename)
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil
