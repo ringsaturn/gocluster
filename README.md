@@ -41,13 +41,14 @@ so you could get you point by this index.
 Clusters of points are have autoincrement generated ids, started at `ClusterIdxSeed`.
 
 `ClusterIdxSeed` is the next power of length of input array.
-For example, if input slice of points length is `78`,  `ClusterIdxSeed == 100`,
-if input slice of points length is `991`,  `ClusterIdxSeed == 1000`
+For example, if input slice of points length is `78`, `ClusterIdxSeed == 100`,
+if input slice of points length is `991`, `ClusterIdxSeed == 1000`
 etc
 
 ## Init cluster index
 
 To init index, you need to prepare your data. All your points should implement `GeoPoint` interface:
+
 ```go
 type GeoPoint interface {
 	GetCoordinates() GeoCoordinates
@@ -61,18 +62,18 @@ type GeoCoordinates struct {
 
 You could tweak the `Cluster`:
 
-|parameter | default value | description |
-|---|---|---|
-|MinZoom | 0 | Minimum zoom level at which clusters are generated |
-|MaxZoom | 16 | Minimum zoom level at which clusters are generated |
-|PointSize | 40 | Cluster radius, in pixels |
-|TileSize | 512 | Tile extent. Radius is calculated relative to this value |
-|NodeSize | 64 | Minimum zoom level at which clusters are generated |
-|MaxZoom | 16 | NodeSize is size of the KD-tree node. Higher means faster indexing but slower search, and vise versa. |
+| parameter | default value | description                                                                                           |
+| --------- | ------------- | ----------------------------------------------------------------------------------------------------- |
+| MinZoom   | 0             | Minimum zoom level at which clusters are generated                                                    |
+| MaxZoom   | 16            | Minimum zoom level at which clusters are generated                                                    |
+| PointSize | 40            | Cluster radius, in pixels                                                                             |
+| TileSize  | 512           | Tile extent. Radius is calculated relative to this value                                              |
+| NodeSize  | 64            | Minimum zoom level at which clusters are generated                                                    |
+| MaxZoom   | 16            | NodeSize is size of the KD-tree node. Higher means faster indexing but slower search, and vise versa. |
 
 ## Search point in boundary box
 
-To search all  points inside the box, that are limited by the box, formed by north-west point and east-south points. You need to provide Z index as well.
+To search all points inside the box, that are limited by the box, formed by north-west point and east-south points. You need to provide Z index as well.
 
 ```go
 
@@ -85,12 +86,11 @@ var result []ClusterPoint = c.GetClusters(northWest, southEast, zoom)
 
 Returns the array of 'ClusterPoint' for zoom level.
 Each point has following coordinates:
- * X coordinate of returned object is Longitude and
- * Y coordinate of returned object is Latitude
- * if the object is cluster of points (NumPoints > 1), the ID is generated started from ClusterIdxSeed (ID>ClusterIdxSeed)
- * if the object represents only one point, it's id is the index of initial GeoPoints array
 
-
+- X coordinate of returned object is Longitude and
+- Y coordinate of returned object is Latitude
+- if the object is cluster of points (NumPoints > 1), the ID is generated started from ClusterIdxSeed (ID>ClusterIdxSeed)
+- if the object represents only one point, it's id is the index of initial GeoPoints array
 
 ## Search points for tile
 
@@ -104,12 +104,10 @@ tileX := 0
 tileY := 1
 zoom := 4
 result := c.GetTile(tileX, tileY, zoom)
-
 ```
+
 In this case all coordinates are returned in pixels for that tile.
 If you want to return objects with Lat, Long, use `GetTileWithLatLon` method.
-
-
 
 TODO: Benchmarks
 TODO: demo server
